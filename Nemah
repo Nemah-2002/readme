@@ -1,0 +1,124 @@
+Chat Application
+
+Overview
+
+This project is a simple chat application implemented in Java using socket programming. It allows multiple clients to connect to a central server, exchange messages in real-time, and handle basic communication with proper user identification.
+
+Features
+
+Server (ChatServer.java)
+
+ • Listens for client connections on port 12345.
+ • Assigns a unique name to each client upon connection.
+ • Broadcasts messages received from one client to all connected clients.
+ • Maintains a list of connected clients and their names for real-time communication.
+ • Handles disconnections and ensures resource cleanup.
+
+Client (ChatClient.java & ChatClient2.java)
+
+ • Prompts users to enter their names upon connection.
+ • Sends messages to the server for broadcasting.
+ • Displays incoming messages from the server in real-time.
+ • Ensures smooth interaction with a simple text-based interface.
+
+Requirements
+
+ • Java Development Kit (JDK): Version 11 or higher.
+ • Command-line interface (CLI): For compiling and running Java files.
+
+Getting Started
+
+1. Compile the Code
+
+Navigate to the respective directories and compile the files:
+
+javac server/ChatServer.java  
+javac client/ChatClient.java  
+javac client/ChatClient2.java  
+
+2. Start the Server
+
+ • Open a terminal and navigate to the server directory.
+ • Start the server using:
+
+java server.ChatServer  
+
+ • The server output will display:
+
+Chat server started...  
+Waiting for clients to connect...  
+
+
+
+3. Start the Clients
+
+ • Open separate terminals for each client and navigate to the client directory.
+ • Start each client using:
+
+java client.ChatClient  
+
+ • Each client will:
+ 1. Prompt the user to enter their name.
+ 2. Display a welcome message after connecting to the server.
+
+How to Use
+
+ 1. Sending Messages:
+ • Type your message in the client terminal and press Enter to send it.
+ • The server will broadcast your message to all connected clients.
+ 2. Receiving Messages:
+ • Messages from other users will appear in the client terminal in real-time.
+ 3. Example Interaction:
+ • Server:
+
+Chat server started...  
+Waiting for clients to connect...  
+
+
+ • Client 1 (Customer):
+
+Enter your name: Customer  
+Welcome Customer!  
+Customer: Hi, I received my order but it’s not what I ordered.  
+
+
+ • Client 2 (Customer Service):
+
+Enter your name: Customer Service  
+Welcome Customer Service!  
+Customer Service: Hello, we’re sorry about that. May I have your name, please?  
+Customer: My name is Nemah.  
+Customer Service: Thank you, Ms. Nemah. Could you also provide me with your order number?  
+Customer: Sure, it’s #3345798.  
+Customer Service: Thank you. After checking, it seems the wrong item was sent. We’ll ship the correct product to your address immediately.  
+Customer: Thanks a lot.  
+Customer Service: You’re welcome, Ms. Nemah. Have a wonderful day!  
+
+Implementation Details
+
+Server (ChatServer.java)
+
+ • Purpose: Manages client connections, names, and message broadcasting.
+ • Key Components:
+ • ServerSocket: Listens for client connections.
+ • ClientHandler: A thread class to manage individual client communication.
+ • clientWriters: A synchronized set storing all connected clients’ output streams.
+ • clientNames: A synchronized map linking client names with their respective writers.
+
+Client (ChatClient.java & ChatClient2.java)
+
+ • Purpose: Connects to the server and facilitates user interaction.
+ • Key Components:
+ • Socket: Connects to the server on port 12345.
+ • BufferedReader and PrintWriter: Handle input and output streams.
+ • Multithreading: Separates message reading from user input handling.
+
+Troubleshooting
+
+ • Server Not Starting: Ensure no other application is using port 12345.
+ • Client Connection Issues: Confirm the server is running and clients are connecting to the correct IP address and port.
+ • Empty Messages: Ensure clients do not send blank messages to avoid server warnings.
+
+License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
